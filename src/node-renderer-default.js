@@ -23,6 +23,7 @@ class NodeRendererDefault extends Component {
       isSearchMatch,
       isSearchFocus,
       buttons,
+      eventHandlerForTitle,
       className,
       style,
       didDrop,
@@ -132,7 +133,7 @@ class NodeRendererDefault extends Component {
                   rowDirectionClass
                 )}
               >
-                <div className={classnames('rst__rowLabel', rowDirectionClass)}>
+                <div className={classnames('rst__rowLabel', rowDirectionClass)} onClick={eventHandlerForTitle ? (e) => eventHandlerForTitle(e) : null}>
                   <span
                     className={classnames(
                       'rst__rowTitle',
@@ -186,6 +187,7 @@ NodeRendererDefault.defaultProps = {
   canDrag: false,
   toggleChildrenVisibility: null,
   buttons: [],
+  eventHandlerForTitle: null,
   className: '',
   style: {},
   parentNode: null,
@@ -211,6 +213,7 @@ NodeRendererDefault.propTypes = {
   scaffoldBlockPxWidth: PropTypes.number.isRequired,
   toggleChildrenVisibility: PropTypes.func,
   buttons: PropTypes.arrayOf(PropTypes.node),
+  eventHandlerForTitle: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.shape({}),
 
